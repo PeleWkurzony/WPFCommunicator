@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:WPFComunicator"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15px" />
+        </Style>
+        
+        <Style x:Key="Label" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />    
+        </Style>
+        
+    </Window.Resources>
+    
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
@@ -16,12 +28,25 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <TextBox>
-            Połączone urządzenia
-        </TextBox>
-        <ListView Grid.Row="1" Grid.Column="0" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Style="{StaticResource Label}"> Połączone urządzeni </TextBox>
+            <Button Grid.Column="1" x:Name="refresh_ui" Click="Refresh_ui_OnClick"> ⟳ </Button>
+            <Button Grid.Column="2" x:Name="add_ui" Click="Add_ui_OnClick"> + </Button>
+        </Grid>
             
+        <ListView Grid.Row="1" Grid.Column="0" x:Name="ipList_ui" SelectionChanged="IpList_ui_OnSelectionChanged">
+                  
         </ListView>
         
+        <TextBox Grid.Row="0" Grid.Column="1"> </TextBox>
+        <ListView Grid.Row="1" Grid.Column="1" x:Name="messages_ui">
+            
+        </ListView>
+
     </Grid>
 </Window>
