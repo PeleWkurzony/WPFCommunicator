@@ -39,14 +39,24 @@
             <Button Grid.Column="2" x:Name="add_ui" Click="Add_ui_OnClick"> + </Button>
         </Grid>
             
-        <ListView Grid.Row="1" Grid.Column="0" x:Name="ipList_ui" SelectionChanged="IpList_ui_OnSelectionChanged">
-                  
+        <ListView Grid.Row="1" Grid.Column="0" x:Name="ipList_ui" ContextMenuOpening="IpList_ui_OnContextMenuOpening" ContextMenuClosing="IpList_ui_OnContextMenuClosing" SelectionMode="Single" SelectionChanged="IpList_ui_OnSelectionChanged">
+            <ListView.Resources>
+                <ContextMenu x:Key="ItemContextMenu">
+                    <MenuItem Header="Usuń" Click="RemoveItem_Click" />
+                </ContextMenu>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
         
         <TextBox Grid.Row="0" Grid.Column="1"> </TextBox>
         <ListView Grid.Row="1" Grid.Column="1" x:Name="messages_ui">
-            
         </ListView>
+        
+        
 
     </Grid>
 </Window>
