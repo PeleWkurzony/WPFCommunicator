@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFComunicator.Properties {
+namespace WPFCommunicator.Properties {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -39,7 +39,7 @@ namespace WPFComunicator.Properties {
             get {
                 if ((resourceMan == null)) {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("WPFComunicator.Properties.Resources",
+                        new global::System.Resources.ResourceManager("WPFCommunicator.Properties.Resources",
                             typeof(Resources).Assembly);
                     resourceMan = temp;
                 }

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPFComunicator {
+namespace WPFCommunicator {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

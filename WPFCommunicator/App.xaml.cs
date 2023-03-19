@@ -1,4 +1,4 @@
-﻿namespace WPFComunicator {
+﻿namespace WPFCommunicator {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

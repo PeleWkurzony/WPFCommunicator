@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPFComunicator {
+namespace WPFCommunicator {
     public partial class ComputerAddWindow : Window {
         public ComputerAddWindow() {
             InitializeComponent();
