@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPFCommunicator"
         mc:Ignorable="d"
-        Title="Dodaj komputer" Height="120" Width="180">
+        Title="Dodaj komputer" Height="120" Width="180"
+        x:Name="addComputer_ui">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5px" />
@@ -15,7 +16,7 @@
         </Style>
     </Window.Resources>
     
-    <StackPanel HorizontalAlignment="Center">
+    <StackPanel HorizontalAlignment="Center" x:Name="stackPanel_ui">
         <TextBlock TextAlignment="Center"> Dodaj komputer:</TextBlock>
         <TextBox x:Name="ip_ui" MinWidth="150px"></TextBox>
         <Button Margin="5px 0 5px 5px" Click="ButtonBase_OnClick"> Dodaj </Button>

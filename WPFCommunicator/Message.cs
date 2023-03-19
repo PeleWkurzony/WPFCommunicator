@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WPFCommunicator {
     internal class Message {
 
+        public string ip;
+        public List<String> messages = new List<string>();
+        
+        public Message(string ip) {
+            this.ip = ip;
+        }
     }
 }

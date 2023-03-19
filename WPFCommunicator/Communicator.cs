@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Windows;
 
 namespace WPFCommunicator {
-    
     public class Communicator {
+       
 
         private string _ip = GetLocalIPAddress();
-        private static string _PORT = "17000";
+        private static int _PORT = 17000;
+        private UdpClient _client = new UdpClient(_PORT);
         
         public Communicator() {
-            
+            // TODO: Do 
         }
 
         private static string GetLocalIPAddress()

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace WPFCommunicator {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow {
-        
+
         private Communicator _communicator = new Communicator();
         private Dictionary<string, Message> _messages = new Dictionary<string, Message>();
         private int? _lastSelectedItemIndex = null;
@@ -18,16 +19,24 @@ namespace WPFCommunicator {
             InitializeComponent();
         }
 
+        public void AddMessages(string ip) {
+            _messages.Add(ip, new Message(ip));
+        }
+
         private void Refresh_ui_OnClick(object sender, RoutedEventArgs e) {
             throw new System.NotImplementedException();
         }
 
-        private void LoadMessages(Message msg) {
-        
+        private void LoadMessages(ref Message msg) {
+            messages_ui.Items.Clear();
+            foreach (var message in msg.messages) {
+                messages_ui.Items.Add(message);
+            }
         }
 
         private void IpList_ui_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-                
+            Message msg = _messages[ipList_ui.SelectedItem as String];
+            LoadMessages(ref msg);
         }
 
         private void Add_ui_OnClick(object sender, RoutedEventArgs e) {
