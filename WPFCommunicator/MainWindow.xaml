@@ -11,8 +11,16 @@
             <Setter Property="FontSize" Value="15px" />
         </Style>
         
-        <Style x:Key="Label" TargetType="{x:Type TextBox}">
-            <Setter Property="VerticalContentAlignment" Value="Center" />    
+        <Style x:Key="Label" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextAlignment" Value="Center" />    
+        </Style>
+        
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Trigger>
+            </Style.Triggers>    
         </Style>
         
     </Window.Resources>
@@ -35,8 +43,9 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox Style="{StaticResource Label}"> Połączone urządzeni </TextBox>
-            <Button Grid.Column="1" x:Name="refresh_ui" Click="Refresh_ui_OnClick"> ⟳ </Button>
+            <TextBlock Style="{StaticResource Label}"> Połączone urządzenia </TextBlock>
+            <!-- <Button Grid.Column="1" x:Name="refresh_ui" Click="Refresh_ui_OnClick"> ⟳ </Button> -->
+            <!-- TODO: Make refresh button working -->
             <Button Grid.Column="2" x:Name="add_ui" Click="Add_ui_OnClick"> + </Button>
         </Grid>
             

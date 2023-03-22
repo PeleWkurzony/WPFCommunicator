@@ -21,7 +21,14 @@ namespace WPFCommunicator {
             var window = Application.Current.MainWindow as MainWindow;
             string ip = ip_ui.Text;
             if (ValidateIp(ip)) {
-                (Application.Current.MainWindow as MainWindow).AddMessage(ip);
+
+                if (window.IpIsExisting(ip)) {
+                    Close();
+                    return;
+                }
+
+                window.AddMessage(ip);
+                window.ipList_ui.SelectedItem = window.ipList_ui.Items[window.ipList_ui.Items.Count - 1];
             }
             else {
                 if (!_isAddedInformation) {
@@ -40,5 +47,6 @@ namespace WPFCommunicator {
 
             Close();
         }
+        
     }
 }

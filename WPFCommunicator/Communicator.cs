@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace WPFCommunicator {
-    public class Communicator {
+    public class Communicator{
        
 
         private string _ip = GetLocalIPAddress();
@@ -23,6 +23,10 @@ namespace WPFCommunicator {
                 var client = new UdpClient(ip, _PORT);
                 var bytesToSend = Encoding.ASCII.GetBytes(content);
                 client.Send(bytesToSend, bytesToSend.Length);
+                _mainWindow.AddMessage(ip, content, true);
+                _mainWindow.messages_ui.ScrollIntoView(
+                    _mainWindow.messages_ui.Items[_mainWindow.messages_ui.Items.Count - 1]    
+                );
             }
             catch (SocketException e) {
                 MessageBox.Show(_mainWindow, "Taki address ip jest nieosiągalny. Sprawdź poprawność addressu!", "Błąd!");
@@ -31,11 +35,16 @@ namespace WPFCommunicator {
 
         private async Task StartReceivingMessages() {
             var client = new UdpClient(_PORT);
-            var buffer = await client.ReceiveAsync();
-            var receiveIp = buffer.RemoteEndPoint.Address.ToString();
-            var message = Encoding.ASCII.GetString(buffer.Buffer);
-            
-            _mainWindow.AddMessage(receiveIp, message);
+            while (true) {
+                var buffer = await client.ReceiveAsync();
+                var receiveIp = buffer.RemoteEndPoint.Address.ToString();
+                var message = Encoding.ASCII.GetString(buffer.Buffer);
+
+                _mainWindow.AddMessage(receiveIp, message, false);
+                _mainWindow.messages_ui.ScrollIntoView(
+                    _mainWindow.messages_ui.Items[_mainWindow.messages_ui.Items.Count - 1]    
+                );
+            }
         }
 
         private static string GetLocalIPAddress()
@@ -52,5 +61,3 @@ namespace WPFCommunicator {
         }
     }
 }
-
-// TODO: Make sure everything works good, make better ui solve some ui problem
